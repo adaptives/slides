@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.diycomputerscience.strutslides.action;
+package com.diycomputerscience.slides.action;
 
 import java.util.List;
 import java.util.Map;
@@ -14,9 +14,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.diycomputerscience.strutslides.Application;
-import com.diycomputerscience.strutslides.model.Category;
-import com.diycomputerscience.strutslides.model.SlideShow;
+import com.diycomputerscience.slides.Application;
+import com.diycomputerscience.slides.model.Category;
+import com.diycomputerscience.slides.model.SlideShow;
 
 /**
  * @author pshah

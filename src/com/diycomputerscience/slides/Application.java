@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.diycomputerscience.strutslides;
+package com.diycomputerscience.slides;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,14 +9,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.diycomputerscience.strutslides.actionform.CategoryForm;
-import com.diycomputerscience.strutslides.actionform.SlideForm;
-import com.diycomputerscience.strutslides.actionform.SlideShowForm;
-import com.diycomputerscience.strutslides.actionform.TagForm;
-import com.diycomputerscience.strutslides.model.Category;
-import com.diycomputerscience.strutslides.model.Slide;
-import com.diycomputerscience.strutslides.model.SlideShow;
-import com.diycomputerscience.strutslides.model.Tag;
+import com.diycomputerscience.slides.actionform.CategoryForm;
+import com.diycomputerscience.slides.actionform.SlideForm;
+import com.diycomputerscience.slides.actionform.SlideShowForm;
+import com.diycomputerscience.slides.actionform.TagForm;
+import com.diycomputerscience.slides.model.Category;
+import com.diycomputerscience.slides.model.Slide;
+import com.diycomputerscience.slides.model.SlideShow;
+import com.diycomputerscience.slides.model.Tag;
 
 /**
  * @author pshah

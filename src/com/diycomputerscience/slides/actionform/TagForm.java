@@ -1,22 +1,23 @@
 /**
  * 
  */
-package com.diycomputerscience.strutslides.model;
+package com.diycomputerscience.slides.actionform;
 
+import org.apache.struts.action.ActionForm;
 
 /**
  * @author pshah
  *
  */
-public class Tag {
+public class TagForm extends ActionForm {
 	
 	private String name;
 	
-	public Tag() {
+	public TagForm() {
 		
 	}
 	
-	public Tag(String name) {
+	public TagForm(String name) {
 		this.name = name;
 	}
 

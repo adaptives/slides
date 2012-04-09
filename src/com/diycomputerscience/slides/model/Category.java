@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.diycomputerscience.strutslides.model;
+package com.diycomputerscience.slides.model;
 
 
 /**

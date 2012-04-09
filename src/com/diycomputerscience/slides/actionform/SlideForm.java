@@ -1,13 +1,14 @@
-package com.diycomputerscience.strutslides.model;
+package com.diycomputerscience.slides.actionform;
 
+import org.apache.struts.action.ActionForm;
 
-public class Slide {
+public class SlideForm extends ActionForm {
 
 	private String title;
 	private String contents;
 	private int placement;
 	
-	public Slide() {
+	public SlideForm() {
 		
 	}
 

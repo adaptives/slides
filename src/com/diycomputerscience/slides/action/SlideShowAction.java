@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.diycomputerscience.strutslides.action;
+package com.diycomputerscience.slides.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,9 +11,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.diycomputerscience.strutslides.Application;
-import com.diycomputerscience.strutslides.model.Slide;
-import com.diycomputerscience.strutslides.model.SlideShow;
+import com.diycomputerscience.slides.Application;
+import com.diycomputerscience.slides.model.Slide;
+import com.diycomputerscience.slides.model.SlideShow;
 
 /**
  * @author pshah

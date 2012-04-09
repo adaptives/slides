@@ -1,24 +1,23 @@
-package com.diycomputerscience.strutslides.actionform;
+package com.diycomputerscience.slides.model;
 
 import java.util.List;
-
-import org.apache.struts.action.ActionForm;
 
 /**
  * @author pshah
  *
  */
-public class SlideShowForm extends ActionForm {
+public class SlideShow {
 	
 	private String title;
 	private String createdBy;
-	private String category;
-	private String tags;
+	private Category categories;
+	private List<Tag> tags;
+	private List<Slide> slides;
 	private String header;
 	private String footer;
 	private String styleClass;
 	
-	public SlideShowForm() {
+	public SlideShow() {
 		
 	}
 
@@ -38,20 +37,28 @@ public class SlideShowForm extends ActionForm {
 		this.createdBy = createdBy;
 	}
 
-	public String getCategory() {
-		return category;
+	public Category getCategory() {
+		return categories;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setCategory(Category categories) {
+		this.categories = categories;
 	}
 
-	public String getTags() {
+	public List<Tag> getTags() {
 		return tags;
 	}
 
-	public void setTags(String tags) {
+	public void setTags(List<Tag> tags) {
 		this.tags = tags;
+	}
+
+	public List<Slide> getSlides() {
+		return slides;
+	}
+
+	public void setSlides(List<Slide> slides) {
+		this.slides = slides;
 	}
 
 	public String getHeader() {
@@ -70,12 +77,4 @@ public class SlideShowForm extends ActionForm {
 		this.footer = footer;
 	}
 
-	public String getStyleClass() {
-		return styleClass;
-	}
-
-	public void setStyleClass(String styleClass) {
-		this.styleClass = styleClass;
-	}
-	
 }
