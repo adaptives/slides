@@ -3,6 +3,9 @@
  */
 package com.diycomputerscience.slides.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 
 /**
  * @author pshah
@@ -10,8 +13,9 @@ package com.diycomputerscience.slides.model;
  */
 public class Category {
 	
-	private String name;
-	private int placement;
+	public long id;
+	public String name;
+	public int placement;
 	
 	public Category() {
 		
@@ -19,22 +23,6 @@ public class Category {
 	
 	public Category(String name) {
 		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getPlacement() {
-		return placement;
-	}
-
-	public void setPlacement(int placement) {
-		this.placement = placement;
 	}
 
 	@Override
