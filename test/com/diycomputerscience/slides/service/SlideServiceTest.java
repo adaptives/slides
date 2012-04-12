@@ -10,6 +10,8 @@ import javax.ejb.embeddable.EJBContainer;
 
 import com.diycomputerscience.slides.model.Category;
 import com.diycomputerscience.slides.model.SlideShow;
+import com.diycomputerscience.slides.view.dto.CategoryTO;
+import com.diycomputerscience.slides.view.dto.SlideShowTO;
 
 import junit.framework.TestCase;
 
@@ -47,7 +49,7 @@ public class SlideServiceTest extends TestCase {
 	}
 	
 	public void testFetchSlideShowsBycategory() {
-		Map<Category, List<SlideShow>> slideShowsByCategory = this.slideService.fetchSlideShowsByCategory();
+		Map<CategoryTO, List<SlideShowTO>> slideShowsByCategory = this.slideService.fetchSlideShowsByCategory();
 		assertNotNull(slideShowsByCategory);
 	}
 

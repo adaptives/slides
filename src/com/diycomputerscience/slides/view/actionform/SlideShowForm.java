@@ -1,4 +1,4 @@
-package com.diycomputerscience.slides.actionform;
+package com.diycomputerscience.slides.view.actionform;
 
 import java.util.List;
 

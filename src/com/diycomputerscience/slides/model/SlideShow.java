@@ -9,6 +9,7 @@ import java.util.List;
 public class SlideShow {
 	
 	public long id;
+	public int placement;
 	public String title;
 	public String createdBy;
 	public Category categories;

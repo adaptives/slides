@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.diycomputerscience.slides.actionform;
+package com.diycomputerscience.slides.view.actionform;
 
 import org.apache.struts.action.ActionForm;
 
@@ -9,15 +9,15 @@ import org.apache.struts.action.ActionForm;
  * @author pshah
  *
  */
-public class CategoryForm extends ActionForm {
+public class TagForm extends ActionForm {
 	
 	private String name;
 	
-	public CategoryForm() {
+	public TagForm() {
 		
 	}
 	
-	public CategoryForm(String name) {
+	public TagForm(String name) {
 		this.name = name;
 	}
 

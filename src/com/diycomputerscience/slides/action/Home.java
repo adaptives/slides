@@ -9,8 +9,6 @@ import java.util.Properties;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NameClassPair;
-import javax.naming.NamingEnumeration;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,10 +17,10 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.diycomputerscience.slides.Application;
-import com.diycomputerscience.slides.model.Category;
-import com.diycomputerscience.slides.model.SlideShow;
 import com.diycomputerscience.slides.service.SlideService;
+import com.diycomputerscience.slides.util.SlideShowPrintUtils;
+import com.diycomputerscience.slides.view.dto.CategoryTO;
+import com.diycomputerscience.slides.view.dto.SlideShowTO;
 
 /**
  * @author pshah
@@ -39,7 +37,8 @@ public class Home extends Action {
 		InitialContext initialContext = new InitialContext(properties);
 		SlideService slideService = (SlideService)initialContext.lookup("SlideServiceLocalBean");
 		
-		Map<Category, List<SlideShow>> slideShows = slideService.fetchSlideShowsByCategory();
+		Map<CategoryTO, List<SlideShowTO>> slideShows = slideService.fetchSlideShowsByCategory();
+		SlideShowPrintUtils.printSlideShowTOByCategory(slideShows);
 		request.setAttribute("slideShows", slideShows);
 		
 		return mapping.findForward("success");
