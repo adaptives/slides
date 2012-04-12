@@ -37,7 +37,7 @@ public class ModelTOConverterTest extends TestCase {
 		SlideShow slideShow1 = new SlideShow();
 		slideShow1.title = "Introduction to EJB";
 		slideShow1.createdBy = "Parag";
-		slideShow1.categories = ejc;
+		slideShow1.category = ejc;
 		Slide slide11 = new Slide();
 		slide11.title = "Agenda";
 		slide11.contents = "Contents for the agenda";
@@ -50,12 +50,12 @@ public class ModelTOConverterTest extends TestCase {
 		slideShow1.slides = slides1;
 		List<SlideShow> slideShowsInCatEjc = new ArrayList<SlideShow>();
 		slideShowsInCatEjc.add(slideShow1);
-		this.slideShows.put(slideShow1.categories, slideShowsInCatEjc);
+		this.slideShows.put(slideShow1.category, slideShowsInCatEjc);
 		
 		SlideShow slideShow2 = new SlideShow();
 		slideShow2.title = "Effective Java";
 		slideShow2.createdBy = "Kalpak";
-		slideShow2.categories = jc;
+		slideShow2.category = jc;
 		Slide slide21 = new Slide();
 		slide21.title = "Agenda";
 		slide21.contents = "Agenda for the Effective Java session";
@@ -66,7 +66,7 @@ public class ModelTOConverterTest extends TestCase {
 		slideShow2.slides = slides2;
 		List<SlideShow> slideShowsInCatJava = new ArrayList<SlideShow>();
 		slideShowsInCatJava.add(slideShow2);
-		this.slideShows.put(slideShow2.categories, slideShowsInCatJava);
+		this.slideShows.put(slideShow2.category, slideShowsInCatJava);
 	}
 
 	/* (non-Javadoc)

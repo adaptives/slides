@@ -12,7 +12,7 @@ public class SlideShow {
 	public int placement;
 	public String title;
 	public String createdBy;
-	public Category categories;
+	public Category category;
 	public List<Tag> tags;
 	public List<Slide> slides;
 	public String header;

@@ -17,7 +17,7 @@ public class SlideShowTO implements Comparable {
 	private int placement;
 	private String title;
 	private String createdBy;
-	private CategoryTO categories;
+	private CategoryTO category;
 	private List<TagTO> tags;
 	private List<SlideTO> slides;
 	private String header;
@@ -33,7 +33,7 @@ public class SlideShowTO implements Comparable {
 		this.placement = slideShow.placement;
 		this.title = slideShow.title;
 		this.createdBy = slideShow.createdBy;
-		this.categories = new CategoryTO(slideShow.categories);
+		this.category = new CategoryTO(slideShow.category);
 		//tags
 		this.tags = new ArrayList<TagTO>();
 		if(slideShow.tags != null) {
@@ -90,11 +90,11 @@ public class SlideShowTO implements Comparable {
 	}
 
 	public CategoryTO getCategories() {
-		return categories;
+		return category;
 	}
 
 	public void setCategories(CategoryTO categories) {
-		this.categories = categories;
+		this.category = categories;
 	}
 
 	public List<TagTO> getTags() {

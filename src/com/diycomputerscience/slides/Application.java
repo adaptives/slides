@@ -56,7 +56,7 @@ public class Application {
 		SlideShow slideShow1 = new SlideShow();
 		slideShow1.title = "Introduction to EJB";
 		slideShow1.createdBy = "Parag";
-		slideShow1.categories = ejc;
+		slideShow1.category = ejc;
 		Slide slide11 = new Slide();
 		slide11.title = "Agenda";
 		slide11.contents = "Contents for the agenda";
@@ -72,7 +72,7 @@ public class Application {
 		SlideShow slideShow2 = new SlideShow();
 		slideShow2.title = "Effective Java";
 		slideShow2.createdBy = "Kalpak";
-		slideShow2.categories = jc;
+		slideShow2.category = jc;
 		Slide slide21 = new Slide();
 		slide21.title = "Agenda";
 		slide21.contents = "Agenda for the Effective Java session";
@@ -105,13 +105,13 @@ public class Application {
 		Map<Category, List<SlideShow>> retVal = new HashMap<Category, List<SlideShow>>();
 		Collection<SlideShow> allSlideShows = this.slideShows.values();
 		for(SlideShow slideShow : allSlideShows) {
-			List<SlideShow> alreadyExists = retVal.get(slideShow.categories);
+			List<SlideShow> alreadyExists = retVal.get(slideShow.category);
 			if(alreadyExists != null) {
 				alreadyExists.add(slideShow);
 			} else {
 				alreadyExists = new ArrayList<SlideShow>();
 				alreadyExists.add(slideShow);
-				retVal.put(slideShow.categories, alreadyExists);
+				retVal.put(slideShow.category, alreadyExists);
 			}
 		}
 		return retVal;
