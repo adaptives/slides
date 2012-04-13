@@ -86,5 +86,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/tomee/xbean-finder-shaded-3.9.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/tomee/xbean-naming-3.9.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/tomee/xbean-reflect-3.9.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/strutstest-2.0.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
