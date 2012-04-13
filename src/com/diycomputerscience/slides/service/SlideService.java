@@ -30,9 +30,7 @@ public class SlideService {
 	public SlideShowTO fetchSlideShowsByTitle(String title) {
 		Application app = Application.getInstance();
 		SlideShow slideShow = app.retreiveSlideShow(title);
-		System.out.println("slideShow slide count " + slideShow.slides.size());
 		SlideShowTO slideShowTO = ModelTOConverter.convertSlideShow(slideShow);
-		System.out.println("slideShowTO slide count " + slideShowTO.getSlides().size());
 		return slideShowTO;
 	}
 	

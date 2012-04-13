@@ -26,8 +26,7 @@ import com.diycomputerscience.slides.view.dto.SlideTO;
 public class ModelTOConverter {
 
 	public static Map<CategoryTO, List<SlideShowTO>> convertSlideShowsByCategory(Map<Category,List<SlideShow>> slideShowsByCategory) {
-		System.out.println("Converting");
-		SlideShowPrintUtils.printSlideShowByCategory(slideShowsByCategory);
+		//SlideShowPrintUtils.printSlideShowByCategory(slideShowsByCategory);
 		Map<CategoryTO, List<SlideShowTO>> retVal = new TreeMap<CategoryTO, List<SlideShowTO>>();
 		Set<Category> categories = slideShowsByCategory.keySet();
 		for(Category category : categories) {
@@ -41,8 +40,7 @@ public class ModelTOConverter {
 			}
 			retVal.put(categoryTo, new ArrayList<SlideShowTO>(slideShowTOs));
 		}
-		System.out.println("Converted");
-		SlideShowPrintUtils.printSlideShowTOByCategory(retVal);
+		//SlideShowPrintUtils.printSlideShowTOByCategory(retVal);
 		return retVal;
 	}
 	

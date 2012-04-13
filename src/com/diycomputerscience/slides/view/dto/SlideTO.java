@@ -15,10 +15,10 @@ public class SlideTO {
 	}
 
 	public SlideTO(Slide slide) {
-		this.id = id;
-		this.title = title;
-		this.contents = contents;
-		this.placement = placement;
+		this.id = slide.id;
+		this.title = slide.title;
+		this.contents = slide.contents;
+		this.placement = slide.placement;
 	}
 	
 	public long getId() {
