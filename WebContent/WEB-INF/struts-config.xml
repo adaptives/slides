@@ -74,13 +74,13 @@
             <!-- Homepage ... root url -->
         <action
             path="/homepage"
-            type="com.diycomputerscience.slides.action.Home">
+            type="com.diycomputerscience.slides.view.action.HomeAction">
             <forward name="success" path="/home.jsp" />
         </action>
         
         <action
             path="/slideShow"
-            type="com.diycomputerscience.slides.action.SlideShowAction">
+            type="com.diycomputerscience.slides.view.action.SlideShowAction">
             <forward name="success" path="/slideshow.jsp" />
         </action>
          
