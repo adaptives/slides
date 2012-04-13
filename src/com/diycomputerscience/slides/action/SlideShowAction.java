@@ -19,6 +19,8 @@ import com.diycomputerscience.slides.Application;
 import com.diycomputerscience.slides.model.Slide;
 import com.diycomputerscience.slides.model.SlideShow;
 import com.diycomputerscience.slides.service.SlideService;
+import com.diycomputerscience.slides.view.dto.SlideShowTO;
+import com.diycomputerscience.slides.view.dto.SlideTO;
 
 /**
  * @author pshah
@@ -38,8 +40,8 @@ public class SlideShowAction extends Action {
 		String title = request.getParameter("title");
 		String slideTitle = request.getParameter("slide");
 		
-		SlideShow slideShow = slideService.fetchSlideShowsByTitle(title);
-		Slide slide = slideService.fetchSlide(slideTitle, slideShow);
+		SlideShowTO slideShow = slideService.fetchSlideShowsByTitle(title);
+		SlideTO slide = slideService.fetchSlide(slideTitle, slideShow);
 		
 		request.setAttribute("slideShow", slideShow);
 		request.setAttribute("slide", slide);

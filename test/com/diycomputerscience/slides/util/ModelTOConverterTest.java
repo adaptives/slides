@@ -22,6 +22,8 @@ import com.diycomputerscience.slides.view.dto.SlideShowTO;
  */
 public class ModelTOConverterTest extends TestCase {
 
+	private Category ejc = new Category("Enterprise Java");
+	private Category jc = new Category("Java");
 	private Map<Category, List<SlideShow>> slideShows;
 	/* (non-Javadoc)
 	 * @see junit.framework.TestCase#setUp()
@@ -29,9 +31,8 @@ public class ModelTOConverterTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		this.slideShows = new HashMap<Category, List<SlideShow>>();
-		Category ejc = new Category("Enterprise Java");
+		
 		ejc.placement = 1;
-		Category jc = new Category("Java");
 		jc.placement = 2;
 		
 		SlideShow slideShow1 = new SlideShow();
@@ -77,7 +78,7 @@ public class ModelTOConverterTest extends TestCase {
 	}
 	
 	public void testConvertSlideByCategory() throws Exception {
-		Map<CategoryTO, List<SlideShowTO>> slideShowsByCatTO = ModelTOConverter.convertSlideByCategory(this.slideShows);
+		Map<CategoryTO, List<SlideShowTO>> slideShowsByCatTO = ModelTOConverter.convertSlideShowsByCategory(this.slideShows);
 		assertEquals(2, slideShowsByCatTO.keySet().size());
 		for(CategoryTO category : slideShowsByCatTO.keySet()) {
 			List<SlideShowTO> slideShowsInCat = slideShowsByCatTO.get(category);
@@ -93,6 +94,23 @@ public class ModelTOConverterTest extends TestCase {
 				fail("Unknown category");
 			}
 		}
+	}
+	
+	public void testConvertSlideShow() throws Exception {
+		List<SlideShow> slideShows = this.slideShows.get(this.ejc);
+		SlideShow ejcSlideShow = slideShows.get(0);
+		//it's our data but just making sure
+		assertNotNull(ejcSlideShow);
+		SlideShowTO ejcSlideShowTO = ModelTOConverter.convertSlideShow(ejcSlideShow);
+		
+		assertEquals(ejcSlideShow.createdBy, ejcSlideShowTO.getCreatedBy());
+		assertEquals(ejcSlideShow.footer, ejcSlideShowTO.getFooter());
+		assertEquals(ejcSlideShow.header, ejcSlideShowTO.getHeader());
+		assertEquals(ejcSlideShow.id, ejcSlideShowTO.getId());
+		assertEquals(ejcSlideShow.placement, ejcSlideShowTO.getPlacement());
+		assertEquals(ejcSlideShow.styleClass, ejcSlideShowTO.getStyleClass());
+		assertEquals(ejcSlideShow.title, ejcSlideShowTO.getTitle());
+		assertEquals(ejcSlideShow.slides.size(), ejcSlideShowTO.getSlides().size());
 	}
 	
 }

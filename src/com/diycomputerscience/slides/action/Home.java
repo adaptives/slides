@@ -38,7 +38,6 @@ public class Home extends Action {
 		SlideService slideService = (SlideService)initialContext.lookup("SlideServiceLocalBean");
 		
 		Map<CategoryTO, List<SlideShowTO>> slideShows = slideService.fetchSlideShowsByCategory();
-		SlideShowPrintUtils.printSlideShowTOByCategory(slideShows);
 		request.setAttribute("slideShows", slideShows);
 		
 		return mapping.findForward("success");

@@ -13,9 +13,11 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 import com.diycomputerscience.slides.model.Category;
+import com.diycomputerscience.slides.model.Slide;
 import com.diycomputerscience.slides.model.SlideShow;
 import com.diycomputerscience.slides.view.dto.CategoryTO;
 import com.diycomputerscience.slides.view.dto.SlideShowTO;
+import com.diycomputerscience.slides.view.dto.SlideTO;
 
 /**
  * @author pshah
@@ -23,7 +25,7 @@ import com.diycomputerscience.slides.view.dto.SlideShowTO;
  */
 public class ModelTOConverter {
 
-	public static Map<CategoryTO, List<SlideShowTO>> convertSlideByCategory(Map<Category,List<SlideShow>> slideShowsByCategory) {
+	public static Map<CategoryTO, List<SlideShowTO>> convertSlideShowsByCategory(Map<Category,List<SlideShow>> slideShowsByCategory) {
 		System.out.println("Converting");
 		SlideShowPrintUtils.printSlideShowByCategory(slideShowsByCategory);
 		Map<CategoryTO, List<SlideShowTO>> retVal = new TreeMap<CategoryTO, List<SlideShowTO>>();
@@ -42,5 +44,13 @@ public class ModelTOConverter {
 		System.out.println("Converted");
 		SlideShowPrintUtils.printSlideShowTOByCategory(retVal);
 		return retVal;
+	}
+	
+	public static SlideShowTO convertSlideShow(SlideShow slideShow) {
+		return new SlideShowTO(slideShow);
+	}
+	
+	public static SlideTO convertSlide(Slide slide) {
+		return new SlideTO(slide);
 	}
 }
