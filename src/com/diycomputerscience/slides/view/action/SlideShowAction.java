@@ -27,6 +27,11 @@ import com.diycomputerscience.slides.view.dto.SlideTO;
  *
  */
 public class SlideShowAction extends Action {
+	
+	public static String TITLE = "title";
+	public static String SLIDE = "slide";
+	public static String SLIDE_SHOW = "slideShow";
+	
 	public ActionForward execute(ActionMapping mapping,
             					ActionForm form,
             					HttpServletRequest request,
@@ -37,14 +42,14 @@ public class SlideShowAction extends Action {
 		InitialContext initialContext = new InitialContext(properties);
 		SlideService slideService = (SlideService)initialContext.lookup("SlideServiceLocalBean");
 		
-		String title = request.getParameter("title");
-		String slideTitle = request.getParameter("slide");
+		String title = request.getParameter(TITLE);
+		String slideTitle = request.getParameter(SLIDE);
 		
 		SlideShowTO slideShow = slideService.fetchSlideShowsByTitle(title);
 		SlideTO slide = slideService.fetchSlide(slideTitle, slideShow);
 		
-		request.setAttribute("slideShow", slideShow);
-		request.setAttribute("slide", slide);
+		request.setAttribute(SLIDE_SHOW, slideShow);
+		request.setAttribute(SLIDE, slide);
 		
 		return mapping.findForward("success");
 	}

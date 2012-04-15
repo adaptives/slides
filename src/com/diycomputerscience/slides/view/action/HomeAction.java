@@ -27,6 +27,9 @@ import com.diycomputerscience.slides.view.dto.SlideShowTO;
  *
  */
 public class HomeAction extends Action {
+	
+	public static String SLIDE_SHOWS = "slideShows";
+	
 	public ActionForward execute(ActionMapping mapping,
             ActionForm form,
             HttpServletRequest request,
@@ -38,7 +41,7 @@ public class HomeAction extends Action {
 		SlideService slideService = (SlideService)initialContext.lookup("SlideServiceLocalBean");
 		
 		Map<CategoryTO, List<SlideShowTO>> slideShows = slideService.fetchSlideShowsByCategory();
-		request.setAttribute("slideShows", slideShows);
+		request.setAttribute(SLIDE_SHOWS, slideShows);
 		
 		return mapping.findForward("success");
 	}
