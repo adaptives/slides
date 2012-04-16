@@ -13,7 +13,7 @@ import com.diycomputerscience.slides.view.dto.CategoryTO;
 import com.diycomputerscience.slides.view.dto.SlideShowTO;
 import com.diycomputerscience.slides.view.dto.SlideTO;
 
-@Stateless(mappedName="SlideService", name="SlideService")
+@Stateless
 public class SlideService {
 	
 	public Map<CategoryTO, List<SlideShowTO>> fetchSlideShowsByCategory() {

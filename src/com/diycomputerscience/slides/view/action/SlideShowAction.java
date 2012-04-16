@@ -37,10 +37,7 @@ public class SlideShowAction extends Action {
             					HttpServletRequest request,
             					HttpServletResponse response) throws Exception {
 		
-		Properties properties = new Properties();
-		properties.setProperty (Context.INITIAL_CONTEXT_FACTORY,"org.apache.openejb.client.LocalInitialContextFactory");
-		InitialContext initialContext = new InitialContext(properties);
-		SlideService slideService = (SlideService)initialContext.lookup("SlideServiceLocalBean");
+		SlideService slideService = (SlideService)new InitialContext().lookup("ejb:module/SlideService");
 		
 		String title = request.getParameter(TITLE);
 		String slideTitle = request.getParameter(SLIDE);
