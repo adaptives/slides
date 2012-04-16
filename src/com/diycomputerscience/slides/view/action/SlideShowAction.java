@@ -15,6 +15,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.diycomputerscience.slides.service.ServiceFactoryProvider;
 import com.diycomputerscience.slides.service.SlideService;
 import com.diycomputerscience.slides.view.dto.SlideShowTO;
 import com.diycomputerscience.slides.view.dto.SlideTO;
@@ -34,7 +35,8 @@ public class SlideShowAction extends Action {
             					HttpServletRequest request,
             					HttpServletResponse response) throws Exception {
 		
-		SlideService slideService = (SlideService)new InitialContext().lookup("ejb:module/SlideService");
+		//SlideService slideService = (SlideService)new InitialContext().lookup("ejb:module/SlideService");
+		SlideService slideService = ServiceFactoryProvider.getServiceFactory().getSlideService();
 		
 		String title = request.getParameter(TITLE);
 		String slideTitle = request.getParameter(SLIDE);
