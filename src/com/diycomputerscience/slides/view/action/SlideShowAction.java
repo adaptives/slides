@@ -15,9 +15,6 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.diycomputerscience.slides.Application;
-import com.diycomputerscience.slides.model.Slide;
-import com.diycomputerscience.slides.model.SlideShow;
 import com.diycomputerscience.slides.service.SlideService;
 import com.diycomputerscience.slides.view.dto.SlideShowTO;
 import com.diycomputerscience.slides.view.dto.SlideTO;

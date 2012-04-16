@@ -33,7 +33,7 @@ public class SlideShowTO implements Comparable {
 		this.placement = slideShow.placement;
 		this.title = slideShow.title;
 		this.createdBy = slideShow.createdBy;
-		this.category = new CategoryTO(slideShow.category);
+		this.category = slideShow.category == null? null : new CategoryTO(slideShow.category);
 		//tags
 		this.tags = new ArrayList<TagTO>();
 		if(slideShow.tags != null) {

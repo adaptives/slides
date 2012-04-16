@@ -1,12 +1,18 @@
 package com.diycomputerscience.slides.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
-import com.diycomputerscience.slides.Application;
 import com.diycomputerscience.slides.model.Category;
+import com.diycomputerscience.slides.model.Slide;
 import com.diycomputerscience.slides.model.SlideShow;
 import com.diycomputerscience.slides.util.ModelTOConverter;
 import com.diycomputerscience.slides.view.dto.CategoryTO;
@@ -15,25 +21,55 @@ import com.diycomputerscience.slides.view.dto.SlideTO;
 
 @Stateless
 public class SlideService {
-	
-	public Map<CategoryTO, List<SlideShowTO>> fetchSlideShowsByCategory() {
-		Application app = Application.getInstance();
-		Map<Category, List<SlideShow>> slideShowsByCat =  app.retreiveAllSlideShowsByCategory();
-		Map<CategoryTO, List<SlideShowTO>> slideShowsTOByCat = ModelTOConverter.convertSlideShowsByCategory(slideShowsByCat); 
-		return slideShowsTOByCat;
+    @PersistenceContext
+	private EntityManager em;
+
+    public Map<CategoryTO, List<SlideShowTO>> fetchSlideShowsByCategory() {
+        List<SlideShowTO> slideShows = fetchAllSlideShows();
+        Map<CategoryTO, List<SlideShowTO>> slideShowsTOByCat = new HashMap<CategoryTO, List<SlideShowTO>>();
+        for (SlideShowTO s : slideShows) {
+            CategoryTO category = s.getCategories();
+            List<SlideShowTO> catSlideShows = slideShowsTOByCat.get(category);
+            if (catSlideShows == null) {
+                catSlideShows = new LinkedList<SlideShowTO>();
+                slideShowsTOByCat.put(category, catSlideShows);
+            }
+
+            catSlideShows.add(s);
+        }
+        return slideShowsTOByCat;
 	}
 
+    public List<SlideShowTO> fetchAllSlideShows() {
+        TypedQuery<SlideShow> query = em.createQuery("Select s from SlideShow s", SlideShow.class);
+        List<SlideShow> result = query.getResultList();
+        List<SlideShowTO> slideShows = new ArrayList<SlideShowTO>();
+
+        for (SlideShow s : result) {
+            SlideShowTO slideShowTO = ModelTOConverter.convertSlideShow(s);
+            slideShows.add(slideShowTO);
+        }
+
+        return slideShows;
+    }
+
 	public SlideShow fetchSlideShow(long id) {
-		return null;
+		return em.find(SlideShow.class, id);
 	}
 
 	public SlideShowTO fetchSlideShowsByTitle(String title) {
-		Application app = Application.getInstance();
-		SlideShow slideShow = app.retreiveSlideShow(title);
-		SlideShowTO slideShowTO = ModelTOConverter.convertSlideShow(slideShow);
+	    TypedQuery<SlideShow> query = em.createQuery("Select ss from SlideShow ss where ss.title = '" + title + "'", SlideShow.class);
+	    List<SlideShow> results = query.getResultList();
+	    SlideShow slideShow = results.size() > 0 ? results.get(0) : null;
+		SlideShowTO slideShowTO = slideShow != null ? ModelTOConverter.convertSlideShow(slideShow) : null;
 		return slideShowTO;
 	}
-	
+
+	public void persistSlideShow(SlideShow s) {
+	    em.persist(s);
+	    em.flush();
+	}
+
 	//TODO: This method must take the slideShw id
 	public SlideTO fetchSlide(String title, SlideShowTO slideShow) {
 		
@@ -55,4 +91,40 @@ public class SlideService {
 		return retVal;
 	}
 
+	public void initDb() {
+        Category ejc = new Category("Enterprise Java");
+        ejc.placement = 1;
+        Category jc = new Category("Java");
+        jc.placement = 2;
+
+        SlideShow slideShow1 = new SlideShow();
+        slideShow1.title = "Introduction to EJB";
+        slideShow1.createdBy = "Parag";
+        slideShow1.category = ejc;
+        Slide slide11 = new Slide();
+        slide11.title = "Agenda";
+        slide11.contents = "Contents for the agenda";
+        Slide slide12 = new Slide();
+        slide12.title = "Summary";
+        slide12.contents = "Contents for summary";
+        List<Slide> slides1 = new ArrayList<Slide>();
+        slides1.add(slide11);
+        slides1.add(slide12);
+        slideShow1.slides = slides1;
+        em.persist(slideShow1);
+
+        SlideShow slideShow2 = new SlideShow();
+        slideShow2.title = "Effective Java";
+        slideShow2.createdBy = "Kalpak";
+        slideShow2.category = jc;
+        Slide slide21 = new Slide();
+        slide21.title = "Agenda";
+        slide21.contents = "Agenda for the Effective Java session";
+        Slide slide22 = new Slide();
+        slide22.title = "Effective Equals and HashCode";
+        slide22.contents = "Effective Equals and HashCode contents";
+        List<Slide> slides2 = new ArrayList<Slide>();
+        slideShow2.slides = slides2;
+        em.persist(slideShow2);
+	}
 }
