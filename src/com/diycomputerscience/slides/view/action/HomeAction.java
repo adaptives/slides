@@ -5,9 +5,7 @@ package com.diycomputerscience.slides.view.action;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
-import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +16,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.diycomputerscience.slides.service.SlideService;
-import com.diycomputerscience.slides.util.SlideShowPrintUtils;
 import com.diycomputerscience.slides.view.dto.CategoryTO;
 import com.diycomputerscience.slides.view.dto.SlideShowTO;
 
@@ -27,7 +24,6 @@ import com.diycomputerscience.slides.view.dto.SlideShowTO;
  *
  */
 public class HomeAction extends Action {
-	
 	public static String SLIDE_SHOWS = "slideShows";
 	
 	public ActionForward execute(ActionMapping mapping,
