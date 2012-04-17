@@ -52,6 +52,9 @@ public class SlideTO {
 	public void setPlacement(int placement) {
 		this.placement = placement;
 	}
-	
-	
+
+    @Override
+    public String toString() {
+        return "SlideTO [id=" + id + ", title=" + title + ", contents=" + contents + ", placement=" + placement + "]";
+    }
 }
