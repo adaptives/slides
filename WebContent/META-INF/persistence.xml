@@ -4,10 +4,13 @@
 	<persistence-unit name="entities">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<jta-data-source>myds</jta-data-source>
-		<non-jta-data-source>myds</non-jta-data-source>
-		
+		<non-jta-data-source>mydsunmanaged</non-jta-data-source>
+		<class>com.diycomputerscience.slides.model.SlideShow</class>
+		<class>com.diycomputerscience.slides.model.Slide</class>
+		<class>com.diycomputerscience.slides.model.Category</class>
+		<class>com.diycomputerscience.slides.model.Tag</class>
 		<properties>
-			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema" />
+			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
 		</properties>
 	</persistence-unit>
 </persistence>
