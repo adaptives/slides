@@ -143,4 +143,10 @@ public class SlideShowTO implements Comparable {
 		return this.placement - other.placement;
 	}
 
+    @Override
+    public String toString() {
+        return "SlideShowTO [id=" + id + ", placement=" + placement + ", title=" + title + ", createdBy=" + createdBy + ", category="
+                + category + ", tags=" + tags + ", slides=" + slides + ", header=" + header + ", footer=" + footer + ", styleClass="
+                + styleClass + "]";
+    }
 }
