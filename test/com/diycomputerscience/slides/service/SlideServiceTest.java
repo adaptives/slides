@@ -41,7 +41,7 @@ public class SlideServiceTest extends TestCase {
         p.put("myds.JdbcDriver", "org.hsqldb.jdbcDriver");
         p.put("myds.JdbcUrl", "jdbc:hsqldb:mem:slidedb");
         
-		this.ejbContainer = EJBContainer.createEJBContainer();
+		this.ejbContainer = EJBContainer.createEJBContainer(p);
 		Object oSlideService = ejbContainer.getContext().lookup("java:global/slides/SlideService");
 		assertNotNull(oSlideService);
 		this.slideService = (SlideService)oSlideService;
