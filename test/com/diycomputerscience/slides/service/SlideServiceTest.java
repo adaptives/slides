@@ -5,6 +5,8 @@ package com.diycomputerscience.slides.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
 
 import javax.ejb.embeddable.EJBContainer;
 
@@ -21,6 +23,7 @@ import junit.framework.TestCase;
  */
 public class SlideServiceTest extends TestCase {
 
+	EJBContainer ejbContainer;
 	private SlideService slideService;
 	
 	/**
@@ -30,27 +33,33 @@ public class SlideServiceTest extends TestCase {
 		super(name);
 	}
 
-	/* (non-Javadoc)
-	 * @see junit.framework.TestCase#setUp()
-	 */
 	protected void setUp() throws Exception {
 		super.setUp();
-		EJBContainer ejbContainer = EJBContainer.createEJBContainer();
+		
+		final Properties p = new Properties();
+        p.put("myds", "new://Resource?type=DataSource");
+        p.put("myds.JdbcDriver", "org.hsqldb.jdbcDriver");
+        p.put("myds.JdbcUrl", "jdbc:hsqldb:mem:slidedb");
+        
+		this.ejbContainer = EJBContainer.createEJBContainer();
 		Object oSlideService = ejbContainer.getContext().lookup("java:global/slides/SlideService");
 		assertNotNull(oSlideService);
 		this.slideService = (SlideService)oSlideService;
+		this.slideService.initDb();
 	}
 
-	/* (non-Javadoc)
-	 * @see junit.framework.TestCase#tearDown()
-	 */
 	protected void tearDown() throws Exception {
 		super.tearDown();
+		if(ejbContainer != null) {
+			ejbContainer.close();
+		}
 	}
 	
 	public void testFetchSlideShowsBycategory() {
 		Map<CategoryTO, List<SlideShowTO>> slideShowsByCategory = this.slideService.fetchSlideShowsByCategory();
+		Set<CategoryTO> categories = slideShowsByCategory.keySet();
 		assertNotNull(slideShowsByCategory);
+		//assertEquals(2, categories);
 	}
 
 }

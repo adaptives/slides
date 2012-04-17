@@ -4,6 +4,8 @@
 	<persistence-unit name="entities">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<jta-data-source>myds</jta-data-source>
+		<non-jta-data-source>myds</non-jta-data-source>
+		
 		<properties>
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema" />
 		</properties>

@@ -15,8 +15,8 @@ public class AllTests {
 		//$JUnit-BEGIN$
 		suite.addTestSuite(SlideServiceTest.class);
 		suite.addTestSuite(ModelTOConverterTest.class);
-//		suite.addTestSuite(TestHomeAction.class);
-//		suite.addTestSuite(TestSlideShowAction.class);
+		suite.addTestSuite(TestHomeAction.class);
+		suite.addTestSuite(TestSlideShowAction.class);
 		//$JUnit-END$
 		return suite;
 	}
