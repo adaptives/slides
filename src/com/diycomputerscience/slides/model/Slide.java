@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Slide {
@@ -13,6 +14,9 @@ public class Slide {
 	public String title;
 	public String contents;
 	public int placement;
+	
+	@ManyToOne(optional=false)
+	public SlideShow slideShow;
 	
 	public Slide() {
 		

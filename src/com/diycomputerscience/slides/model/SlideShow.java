@@ -1,5 +1,6 @@
 package com.diycomputerscience.slides.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -23,17 +26,19 @@ public class SlideShow {
 	public int placement;
 	public String title;
 	public String createdBy;
+	@ManyToOne(optional=false)
 	public Category category;
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-	public List<Tag> tags;
-    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-	public List<Slide> slides;
+	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+	public List<Tag> tags = new ArrayList<Tag>();
+    @OneToMany(mappedBy="slideShow", cascade = {CascadeType.ALL})
+	public List<Slide> slides = new ArrayList<Slide>();
 	public String header;
 	public String footer;
 	public String styleClass;
 	
 	public SlideShow() {
-		
+		//this.tags = new ArrayList<Tag>();
+		//this.slides = new ArrayList<Slide>();
 	}
 
 }

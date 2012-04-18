@@ -3,10 +3,13 @@
  */
 package com.diycomputerscience.slides.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author pshah
@@ -20,6 +23,9 @@ public class Category {
     public String name;
     public int placement;
 
+    @OneToMany(mappedBy="category")
+    public List<SlideShow> slideShows;
+    
     public Category() {
 
     }
