@@ -59,7 +59,7 @@ public class SlideServiceTest extends TestCase {
 		Map<CategoryTO, List<SlideShowTO>> slideShowsByCategory = this.slideService.fetchSlideShowsByCategory();
 		Set<CategoryTO> categories = slideShowsByCategory.keySet();
 		assertNotNull(slideShowsByCategory);
-		//assertEquals(2, categories);
+		assertEquals(2, categories.size());
 	}
 
 }
