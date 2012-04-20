@@ -3,13 +3,10 @@ package com.diycomputerscience.slides.view.action;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.struts.action.RequestProcessor;
+import servletunit.struts.MockStrutsTestCase;
 
 import com.diycomputerscience.slides.view.dto.CategoryTO;
 import com.diycomputerscience.slides.view.dto.SlideShowTO;
-
-import servletunit.HttpServletRequestSimulator;
-import servletunit.struts.MockStrutsTestCase;
 
 
 
