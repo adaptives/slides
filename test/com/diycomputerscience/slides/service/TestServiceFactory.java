@@ -33,7 +33,7 @@ public class TestServiceFactory implements IServiceFactory {
 		//create slideshows and slides
 		SlideShowTO slideShow1 = new SlideShowTO();
 		slideShow1.setId(1);
-		slideShow1.setTitle("EJB");
+		slideShow1.setTitle("Introduction to EJB");
 		slideShow1.setCreatedBy("Parag");
 		slideShow1.setFooter("");
 		slideShow1.setHeader("");
@@ -47,7 +47,7 @@ public class TestServiceFactory implements IServiceFactory {
 		SlideTO slide12 = new SlideTO();
 		slide12.setId(2);
 		slide12.setPlacement(1);
-		slide12.setTitle("Introduction to EJB");
+		slide12.setTitle("Summary");
 		slide12.setContents("This is the introduction to EJB's");
 		List<SlideTO> slideShow11SlidesList = new ArrayList<SlideTO>();
 		slideShow11SlidesList.add(slide11);
@@ -86,6 +86,9 @@ public class TestServiceFactory implements IServiceFactory {
 		
 		SlideService mock = createMock(SlideService.class);
 		expect(mock.fetchSlideShowsByCategory()).andReturn(slideShowsTOByCat);
+		expect(mock.fetchSlideShowsByTitle(slideShow1.getTitle())).andReturn(slideShow1);
+		expect(mock.fetchSlide(slide12.getTitle(), slideShow1)).andReturn(slide12);
+		
 		replay(mock);
 		return mock;
 	}
