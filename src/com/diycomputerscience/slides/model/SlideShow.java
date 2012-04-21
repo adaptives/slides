@@ -26,19 +26,21 @@ public class SlideShow {
 	public int placement;
 	public String title;
 	public String createdBy;
-	@ManyToOne(optional=false)
-	public Category category;
-	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-	public List<Tag> tags = new ArrayList<Tag>();
-    @OneToMany(mappedBy="slideShow", cascade = {CascadeType.ALL})
-	public List<Slide> slides = new ArrayList<Slide>();
 	public String header;
 	public String footer;
 	public String styleClass;
 	
+	@ManyToOne(optional=false, cascade = {CascadeType.ALL})
+	public Category category;
+
+	@ManyToMany(cascade = {CascadeType.ALL})
+	public List<Tag> tags = new ArrayList<Tag>();
+
+	@OneToMany(mappedBy="slideShow", cascade = {CascadeType.ALL})
+	public List<Slide> slides = new ArrayList<Slide>();
+
 	public SlideShow() {
-		//this.tags = new ArrayList<Tag>();
-		//this.slides = new ArrayList<Slide>();
+
 	}
 
 }
