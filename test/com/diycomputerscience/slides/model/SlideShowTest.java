@@ -33,7 +33,8 @@ public final class SlideShowTest extends TestCase {
 
     @Override
     protected void tearDown() throws Exception {
-
+        em.clear();
+        em.close();
     }
 
 

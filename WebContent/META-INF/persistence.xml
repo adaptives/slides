@@ -11,6 +11,7 @@
 		<class>com.diycomputerscience.slides.model.Tag</class>
 		<properties>
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
+			<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
 		</properties>
 	</persistence-unit>
 </persistence>
