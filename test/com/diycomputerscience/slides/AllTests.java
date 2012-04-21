@@ -1,5 +1,6 @@
 package com.diycomputerscience.slides;
 
+import com.diycomputerscience.slides.model.SlideShowTest;
 import com.diycomputerscience.slides.service.SlideServiceTest;
 import com.diycomputerscience.slides.util.ModelTOConverterTest;
 import com.diycomputerscience.slides.view.action.TestHomeAction;
@@ -17,6 +18,7 @@ public class AllTests {
 		suite.addTestSuite(ModelTOConverterTest.class);
 		suite.addTestSuite(TestHomeAction.class);
 		suite.addTestSuite(TestSlideShowAction.class);
+		suite.addTestSuite(SlideShowTest.class);
 		//$JUnit-END$
 		return suite;
 	}
