@@ -5,12 +5,13 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -18,6 +19,13 @@ import javax.persistence.OneToMany;
  *
  */
 @Entity
+@NamedQueries (
+    {
+        @NamedQuery(name = "getAllSlideShows", query = "Select s from SlideShow s"),
+        @NamedQuery(name = "getSlideShowsByTitle", query = "Select s from SlideShow s where s.title = :title"),
+        @NamedQuery(name = "getSlideShowsByCategory", query = "Select s from SlideShow s WHERE s.category.name = :category")
+    }
+)
 public class SlideShow {
 	
     @Id

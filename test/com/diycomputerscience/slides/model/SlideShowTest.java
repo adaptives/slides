@@ -12,41 +12,9 @@ import javax.persistence.TypedQuery;
 
 import junit.framework.TestCase;
 
-public final class SlideShowTest extends TestCase {
-    public EntityManager em;
-    
-    @Override
-    protected void setUp() throws Exception {
-        String dbName = "slides" + new Date().getTime();
-        String connectionUrl = "jdbc:hsqldb:mem:" + dbName;
-        final Properties p = new Properties();
-        p.put("myds", "new://Resource?type=DataSource");
-        p.put("myds.JdbcDriver", "org.hsqldb.jdbcDriver");
-        p.put("myds.JdbcUrl", connectionUrl);
+public final class SlideShowTest extends AbstractEntityTest {
 
-        p.put("openjpa.Id", "entities");
-        p.put("openjpa.ConnectionURL", connectionUrl);
-        p.put("openjpa.ConnectionDriverName", "org.hsqldb.jdbcDriver");
-        p.put("openjpa.ConnectionUserName", "sa");
-        p.put("openjpa.ConnectionPassword", "");
-        p.put("openjpa.Connection2URL", connectionUrl);
-        p.put("openjpa.Connection2DriverName", "org.hsqldb.jdbcDriver");
-        p.put("openjpa.Connection2UserName", "sa");
-        p.put("openjpa.Connection2Password", "");
-
-        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("entities", p);
-        em = emFactory.createEntityManager();
-    }
-
-
-    @Override
-    protected void tearDown() throws Exception {
-        em.clear();
-        em.close();
-    }
-
-
-    public void testSlideShowBean() throws Exception {
+    public void testSlideShowPersist() throws Exception {
         SlideShow s = new SlideShow();
 
         Slide slide1 = new Slide();
