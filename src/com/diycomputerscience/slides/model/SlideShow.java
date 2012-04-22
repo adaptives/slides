@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -18,6 +20,13 @@ import javax.persistence.OneToMany;
  *
  */
 @Entity
+@NamedQueries (
+    {
+        @NamedQuery(name = "getAllSlideShows", query = "Select s from SlideShow s"),
+        @NamedQuery(name = "getSlideShowsByTitle", query = "Select s from SlideShow s where s.title = :title"),
+        @NamedQuery(name = "getSlideShowsByCategory", query = "Select s from SlideShow s WHERE s.category.name = :category")
+    }
+)
 public class SlideShow {
 	
     @Id
@@ -30,13 +39,13 @@ public class SlideShow {
 	public String footer;
 	public String styleClass;
 	
-	@ManyToOne(optional=false, cascade = {CascadeType.ALL})
+	@ManyToOne(optional=false, cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	public Category category;
 
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	public List<Tag> tags = new ArrayList<Tag>();
 
-	@OneToMany(mappedBy="slideShow", cascade = {CascadeType.ALL})
+	@OneToMany(mappedBy="slideShow", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	public List<Slide> slides = new ArrayList<Slide>();
 
 	public SlideShow() {
