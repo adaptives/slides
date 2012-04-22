@@ -104,7 +104,6 @@ public class SlideService {
         slideShow1.title = "Introduction to EJB";
         slideShow1.createdBy = "Parag";
         slideShow1.category = ejc;
-        em.persist(slideShow1);
         Slide slide11 = new Slide();
         slide11.slideShow = slideShow1;
         slide11.title = "Agenda";

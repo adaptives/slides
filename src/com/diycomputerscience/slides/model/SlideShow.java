@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,13 +39,13 @@ public class SlideShow {
 	public String footer;
 	public String styleClass;
 	
-	@ManyToOne(optional=false, cascade = {CascadeType.ALL})
+	@ManyToOne(optional=false, cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	public Category category;
 
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	public List<Tag> tags = new ArrayList<Tag>();
 
-	@OneToMany(mappedBy="slideShow", cascade = {CascadeType.ALL})
+	@OneToMany(mappedBy="slideShow", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	public List<Slide> slides = new ArrayList<Slide>();
 
 	public SlideShow() {
