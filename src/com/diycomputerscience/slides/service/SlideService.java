@@ -42,7 +42,7 @@ public class SlideService {
 	}
 
     public List<SlideShowTO> fetchAllSlideShows() {
-        TypedQuery<SlideShow> query = em.createQuery("Select s from SlideShow s", SlideShow.class);
+        TypedQuery<SlideShow> query = em.createNamedQuery("getAllSlideShows", SlideShow.class);
         List<SlideShow> result = query.getResultList();
         List<SlideShowTO> slideShows = new ArrayList<SlideShowTO>();
 
@@ -59,7 +59,7 @@ public class SlideService {
 	}
 
 	public SlideShowTO fetchSlideShowsByTitle(String title) {
-	    TypedQuery<SlideShow> query = em.createQuery("Select ss from SlideShow ss where ss.title = '" + title + "'", SlideShow.class);
+	    TypedQuery<SlideShow> query = em.createNamedQuery("getSlideShowsByTitle", SlideShow.class).setParameter("title", title);
 	    List<SlideShow> results = query.getResultList();
 	    SlideShow slideShow = results.size() > 0 ? results.get(0) : null;
 		SlideShowTO slideShowTO = slideShow != null ? ModelTOConverter.convertSlideShow(slideShow) : null;
@@ -104,7 +104,6 @@ public class SlideService {
         slideShow1.title = "Introduction to EJB";
         slideShow1.createdBy = "Parag";
         slideShow1.category = ejc;
-        em.persist(slideShow1);
         Slide slide11 = new Slide();
         slide11.slideShow = slideShow1;
         slide11.title = "Agenda";
@@ -132,5 +131,6 @@ public class SlideService {
         slide22.contents = "Effective Equals and HashCode contents";
         slideShow2.slides.add(slide22);
         em.persist(slideShow2);
+        em.flush();
 	}
 }
